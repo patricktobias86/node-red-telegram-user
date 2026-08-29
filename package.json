@@ -1,7 +1,7 @@
 {
   "name": "@patricktobias86/node-red-telegram-user",
-  "version": "1.2.6",
-  "description": "Node-RED nodes to communicate with TeleProto.",
+  "version": "1.3.0",
+  "description": "Node-RED nodes to communicate with a Telegram user.",
   "main": "nodes/config.js",
   "keywords": [
     "node-red",
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patricktobias86/node-red-telegram-account.git"
+    "url": "git+https://github.com/patricktobias86/node-red-telegram-user.git"
   },
   "author": {
     "name": "Patrick Tobias",
@@ -19,9 +19,9 @@
     "node": ">=20"
   },
   "bugs": {
-    "url": "https://github.com/patricktobias86/node-red-telegram-account/issues"
+    "url": "https://github.com/patricktobias86/node-red-telegram-user/issues"
   },
-  "homepage": "https://github.com/patricktobias86/node-red-telegram-account#readme",
+  "homepage": "https://github.com/patricktobias86/node-red-telegram-user#readme",
   "license": "MIT",
   "node-red": {
     "nodes": {
@@ -44,10 +44,10 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "teleproto": "^1.224.1"
+    "teleproto": "^1.229.0"
   },
   "devDependencies": {
-    "mocha": "^11.7.5",
+    "mocha": "^11.8.0",
     "proxyquire": "^2.1.3"
   },
   "overrides": {
