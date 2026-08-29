@@ -16,9 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh repo clone "$GITHUB_REPOSITORY" .
+          git checkout "$GITHUB_SHA"
 
       - name: Check version change
         id: version
@@ -35,13 +37,13 @@ jobs:
             echo "version=$current_version" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Set up Node.js
+      - name: Prepare Node.js
         if: steps.version.outputs.changed == 'true'
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          registry-url: https://registry.npmjs.org
-          cache: npm
+        run: |
+          node --version
+          npm install --global npm@11
+          npm --version
+          npm config set registry https://registry.npmjs.org
 
       - name: Install dependencies
         if: steps.version.outputs.changed == 'true'
