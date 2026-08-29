@@ -3,7 +3,7 @@
 var NodeRedTelegramEditor=(()=>{var h=Object.defineProperty;var tr=Object.getOwnPropertyDescriptor;var ir=Object.getOwnPropertyNames;var or=Object.prototype.hasOwnProperty;var er=(r,o)=>{for(var e in o)h(r,e,{get:o[e],enumerable:!0})},mr=(r,o,e,i)=>{if(o&&typeof o=="object"||typeof o=="function")for(let m of ir(o))!or.call(r,m)&&m!==e&&h(r,m,{get:()=>o[m],enumerable:!(i=tr(o,m))||i.enumerable});return r};var fr=r=>mr(h({},"__esModule",{value:!0}),r);var ar={};er(ar,{createEditorNode:()=>Y,jqSelector:()=>rr,setInputValue:()=>C,watchInput:()=>v});var b=typeof globalThis=="object"&&globalThis||typeof window=="object"&&window||typeof self=="object"&&self||typeof global=="object"&&global||(function(){return this})();function d(r){return r==null||typeof r!="object"&&typeof r!="function"}function g(r){return ArrayBuffer.isView(r)&&!(r instanceof DataView)}function O(r){if(d(r))return r;if(Array.isArray(r)||g(r)||r instanceof ArrayBuffer||typeof SharedArrayBuffer<"u"&&r instanceof SharedArrayBuffer)return r.slice(0);let o=Object.getPrototypeOf(r);if(o==null)return Object.assign(Object.create(o),r);let e=o.constructor;if(r instanceof Date||r instanceof Map||r instanceof Set)return new e(r);if(r instanceof RegExp){let i=new e(r);return i.lastIndex=r.lastIndex,i}if(r instanceof DataView)return new e(r.buffer.slice(0));if(r instanceof Error){let i;return r instanceof AggregateError?i=new e(r.errors,r.message,{cause:r.cause}):i=new e(r.message,{cause:r.cause}),i.stack=r.stack,Object.assign(i,r),i}return typeof File<"u"&&r instanceof File?new e([r],r.name,{type:r.type,lastModified:r.lastModified}):typeof r=="object"?Object.assign(Object.create(o),r):r}function w(r){return typeof b.Buffer<"u"&&b.Buffer.isBuffer(r)}function S(r){return Object.getOwnPropertySymbols(r).filter(o=>Object.prototype.propertyIsEnumerable.call(r,o))}function x(r){return r==null?r===void 0?"[object Undefined]":"[object Null]":Object.prototype.toString.call(r)}var B="[object RegExp]",E="[object String]",j="[object Number]",I="[object Boolean]",W="[object Arguments]",N="[object Symbol]",P="[object Date]",D="[object Map]",M="[object Set]",R="[object Array]";var F="[object ArrayBuffer]",K="[object Object]";var q="[object DataView]",U="[object Uint8Array]",z="[object Uint8ClampedArray]",_="[object Uint16Array]",k="[object Uint32Array]";var J="[object Int8Array]",L="[object Int16Array]",V="[object Int32Array]";var G="[object Float32Array]",H="[object Float64Array]";function c(r,o,e,i=new Map,m=void 0){let p=m?.(r,o,e,i);if(p!==void 0)return p;if(d(r))return r;if(i.has(r))return i.get(r);if(Array.isArray(r)){let t=new Array(r.length);i.set(r,t);for(let f=0;f<r.length;f++)t[f]=c(r[f],f,e,i,m);return Object.hasOwn(r,"index")&&(t.index=r.index),Object.hasOwn(r,"input")&&(t.input=r.input),t}if(r instanceof Date)return new Date(r.getTime());if(r instanceof RegExp){let t=new RegExp(r.source,r.flags);return t.lastIndex=r.lastIndex,t}if(r instanceof Map){let t=new Map;i.set(r,t);for(let[f,a]of r)t.set(f,c(a,f,e,i,m));return t}if(r instanceof Set){let t=new Set;i.set(r,t);for(let f of r)t.add(c(f,void 0,e,i,m));return t}if(w(r))return r.subarray();if(g(r)){let t=new(Object.getPrototypeOf(r)).constructor(r.length);i.set(r,t);for(let f=0;f<r.length;f++)t[f]=c(r[f],f,e,i,m);return t}if(r instanceof ArrayBuffer||typeof SharedArrayBuffer<"u"&&r instanceof SharedArrayBuffer)return r.slice(0);if(r instanceof DataView){let t=new DataView(r.buffer.slice(0),r.byteOffset,r.byteLength);return i.set(r,t),n(t,r,e,i,m),t}if(typeof File<"u"&&r instanceof File){let t=new File([r],r.name,{type:r.type});return i.set(r,t),n(t,r,e,i,m),t}if(typeof Blob<"u"&&r instanceof Blob){let t=new Blob([r],{type:r.type});return i.set(r,t),n(t,r,e,i,m),t}if(r instanceof Error){let t=structuredClone(r);return i.set(r,t),t.message=r.message,t.name=r.name,t.stack=r.stack,t.cause=r.cause,t.constructor=r.constructor,n(t,r,e,i,m),t}if(r instanceof Boolean){let t=new Boolean(r.valueOf());return i.set(r,t),n(t,r,e,i,m),t}if(r instanceof Number){let t=new Number(r.valueOf());return i.set(r,t),n(t,r,e,i,m),t}if(r instanceof String){let t=new String(r.valueOf());return i.set(r,t),n(t,r,e,i,m),t}if(typeof r=="object"&&pr(r)){let t=Object.create(Object.getPrototypeOf(r));return i.set(r,t),n(t,r,e,i,m),t}return r}function n(r,o,e=r,i,m){let p=[...Object.keys(o),...S(o)];for(let t=0;t<p.length;t++){let f=p[t],a=Object.getOwnPropertyDescriptor(r,f);(a==null||a.writable)&&(r[f]=c(o[f],f,e,i,m))}}function pr(r){switch(x(r)){case W:case R:case F:case q:case I:case P:case G:case H:case J:case L:case V:case D:case j:case K:case B:case M:case E:case N:case U:case z:case _:case k:return!0;default:return!1}}function Q(r){return c(r,void 0,r,new Map,void 0)}function y(r){if(!r||typeof r!="object")return!1;let o=Object.getPrototypeOf(r);return o===null||o===Object.prototype||Object.getPrototypeOf(o)===null?Object.prototype.toString.call(r)==="[object Object]":!1}function u(r){return y(r)||Array.isArray(r)}function X(r){return r==="__proto__"}function s(r,o,e){let i=Object.keys(o);for(let m=0;m<i.length;m++){let p=i[m];if(X(p))continue;let t=o[p],f=r[p],a=e(f,t,p,r,o);a!==void 0?r[p]=a:u(t)&&u(f)?r[p]=s(f,t,e):Array.isArray(t)?r[p]=s([],t,e):y(t)?r[p]=s({},t,e):(f===void 0||t!==void 0)&&(r[p]=t)}return r}function A(r,o){return s(Q(r),o,function e(i,m){if(u(m)&&u(i))return s(O(i),m,e);if(Array.isArray(m))return s([],m,e);if(y(m))return s({},m,e)})}var nr={};function Y(r){return A(nr,r)}var Z="node-input",T="node-config-input";function sr(r){let o=r.startsWith("$"),e=r.startsWith("$"),i=r.startsWith(`#${T}`)||r.startsWith(`#${Z}`);return{isNodeIdShortcut:o,isNodeConfigIdShortcut:e,isFullSelector:i,value:o||e||i}}function l(r){let o=sr(r);return o.isNodeConfigIdShortcut?`#${T}-${r.replace("$","")}`:o.isNodeIdShortcut?`#${Z}-${r.replace("$","")}`:r}function v(r,o,e={additionalEvents:[]}){let i=(Array.isArray(r)?r:[r]).map(l).join(", "),m=["input",...e.additionalEvents];$(i).on(m.join(" "),()=>{o($(i).map(function(){return $(this).val()}).get())})}function C(r,o){let e=l(r);$(e).val(o)}function rr(r){let o=l(r);return $(o)}return fr(ar);})();
 /* node-red-dxp bundle:end */
     RED.nodes.registerType('send-message', NodeRedTelegramEditor.createEditorNode({
-        category: 'telegram-user',
+        category: 'telegram_user',
         color: '#229ED9',
         icon: 'tg.png',
         align: 'right',
@@ -36,187 +36,36 @@ var NodeRedTelegramEditor=(()=>{var h=Object.defineProperty;var tr=Object.getOwn
         label: function() {
             return this.name||'send message';
         },
-        oneditprepare: function () {
-            NodeRedTelegramEditor.watchInput('#node-input-parseMode', function ([parseMode]) {
+        oneditprepare: function() {
+            NodeRedTelegramEditor.watchInput('$parseMode', function([parseMode]) {
                 NodeRedTelegramEditor.jqSelector('#node-linkPreview-row').toggle(parseMode === 'html');
             }, {
                 additionalEvents: ['change']
             });
-
-
-            // const filesContainer = $("#node-input-files-container");
-            // if (Array.isArray(node.file)) {
-            //     node.file.forEach(file => {
-            //         const fileInput = `
-            //     <div class="node-input-file-container">
-            //         <input type="text" class="node-input-file" style="display: block; margin-top: 5px;" value="${file}">
-            //         <button class="node-input-remove-file editor-button editor-button-small editor-button-delete" type="button">Remove</button>
-            //     </div>
-            // `;
-            //         filesContainer.append(fileInput);
-            //     });
-            // }
-
-            // $("#node-input-add-file").click(function () {
-            //     const filesContainer = $("#node-input-files-container");
-            //     const fileInput = `
-            //       <div class="node-input-file-container">
-            //           <input type="text" class="node-input-file" style="display: block; margin-top: 5px;">
-            //           <button class="node-input-remove-file editor-button editor-button-small editor-button-delete" type="button">Remove</button>
-            //       </div>
-            //   `;
-            //     filesContainer.append(fileInput);
-            // });
-
-            // $("#node-input-files-container").on("click", ".node-input-remove-file", function () {
-            //     $(this).closest(".node-input-file-container").remove();
-            //     const removedIndex = $(this).closest(".node-input-file-container").index();
-            //     const updatedFiles = node.file || [];
-            //     updatedFiles.splice(removedIndex, 1); 
-            //     node.file = updatedFiles;
-            // });
-
-            // $("#node-input-files-container").on("change", ".node-input-file", function () {
-            //     const fileInput = $(this);
-            //     const updatedFiles = node.file || [];
-            //     updatedFiles.push(fileInput.val());
-            //     node.file = updatedFiles;
-            // });
-        },
+        }
     }));
 </script>
 
 
 <script type="text/html" data-template-name="send-message">
-    <div class="form-row">
-      <label for="node-input-name">
-        <i class="fa fa-tag"></i> Name
-      </label>
-      <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-      <label for="node-input-config">
-        <i class="fa fa-gear"></i> Config
-      </label>
-      <input type="hidden" id="node-input-config">
-    </div>
-    <div class="form-row">
-      <label for="node-input-debug">
-        <i class="fa fa-bug"></i> Debug
-      </label>
-      <input type="checkbox" id="node-input-debug">
-    </div>
-  
-    <div class="form-row">
-      <label for="node-input-chatId">
-        <i class="fa fa-user"></i> Chat ID
-      </label>
-      <input type="text" id="node-input-chatId" placeholder="Peer ID">
-    </div>
-  
-    <div class="form-row">
-      <label for="node-input-message">
-        <i class="fa fa-pencil"></i> Message
-      </label>
-      <textarea type="text" id="node-input-message" placeholder="Message"></textarea>
-    </div>
-
-    <div class="form-row">
-      <label for="node-input-parseMode">
-        <i class="fa fa-code"></i> Parse Mode
-      </label>
-      <select id="node-input-parseMode">
-        <option value="md" selected>Markdown</option>
-        <option value="html">HTML</option>
-      </select>
-    </div>
-
-    <div class="form-row">
-      <label for="node-input-schedule">
-        <i class="fa fa-clock"></i> Schedule
-      </label>
-      <input type="datetime-local" id="node-input-schedule" placeholder="Schedule">
-    </div>
-    <div class="form-row" id="node-linkPreview-row">
-      <label for="node-input-linkPreview">
-          <i class="fa fa-link"></i> Show Link Preview
-      </label>
-      <input type="checkbox" id="node-input-linkPreview">
-  </div>
-  
-  <div class="form-row">
-    <label>
-        <i class="fa fa-file"></i> Files
-    </label>
-    <div id="node-input-files-container">
-
-    </div>
-    <button id="node-input-add-file" class="editor-button editor-button-large editor-button-add" style="margin-top: 1rem;" type="button">Add File</button>
-</div>
-  
-  <div class="form-row" id="node-thumb-row">
-      <label for="node-input-thumb">
-          <i class="fa fa-file-image"></i> Thumbnail (Optional)
-      </label>
-      <input type="text" id="node-input-thumb">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-forceDocument">
-          <i class="fa fa-file"></i> Force Send as Document
-      </label>
-      <input type="checkbox" id="node-input-forceDocument">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-clearDraft">
-          <i class="fa fa-trash"></i> Clear Existing Draft
-      </label>
-      <input type="checkbox" id="node-input-clearDraft">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-buttons">
-          <i class="fa fa-th"></i> Buttons
-      </label>
-      <textarea type="text" id="node-input-buttons" placeholder="Buttons"></textarea>
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-silent">
-          <i class="fa fa-bell-slash"></i> Silent Notification
-      </label>
-      <input type="checkbox" id="node-input-silent">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-supportStreaming">
-          <i class="fa fa-video"></i> Support Streaming
-      </label>
-      <input type="checkbox" id="node-input-supportStreaming">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-noforwards">
-          <i class="fa fa-forward"></i> Disable Forwarding
-      </label>
-      <input type="checkbox" id="node-input-noforwards">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-commentTo">
-          <i class="fa fa-comments"></i> Comment To Message
-      </label>
-      <input type="text" id="node-input-commentTo" placeholder="Comment To">
-  </div>
-  
-  <div class="form-row">
-      <label for="node-input-topMsgId">
-          <i class="fa fa-reply"></i> Reply To Thread
-      </label>
-      <input type="text" id="node-input-topMsgId" placeholder="Top Msg ID">
-  </div>
-  </script>
+    <div class="form-row"><label for="node-input-name">Name</label><input id="node-input-name" type="text"></div>
+    <div class="form-row"><label for="node-input-config">Config</label><input id="node-input-config" type="text"></div>
+    <div class="form-row"><label for="node-input-chatId">Chat ID</label><input id="node-input-chatId" type="text" placeholder="Peer ID, @username, or me"></div>
+    <div class="form-row"><label for="node-input-message">Message</label><textarea id="node-input-message" rows="5" placeholder="Message text"></textarea></div>
+    <div class="form-row"><label for="node-input-parseMode">Parse mode</label><select id="node-input-parseMode"><option value="md">Markdown</option><option value="html">HTML</option></select></div>
+    <div class="form-row" id="node-linkPreview-row"><label for="node-input-linkPreview">Link preview</label><input id="node-input-linkPreview" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-schedule">Schedule</label><input id="node-input-schedule" type="datetime-local"></div>
+    <div class="form-row"><label for="node-input-thumb">Thumbnail</label><input id="node-input-thumb" type="text" placeholder="Optional file path"></div>
+    <div class="form-row"><label for="node-input-buttons">Buttons</label><textarea id="node-input-buttons" rows="3" placeholder="Button configuration"></textarea></div>
+    <div class="form-row"><label for="node-input-commentTo">Comment to</label><input id="node-input-commentTo" type="text" placeholder="Message ID"></div>
+    <div class="form-row"><label for="node-input-topMsgId">Thread</label><input id="node-input-topMsgId" type="text" placeholder="Top message ID"></div>
+    <div class="form-row"><label for="node-input-forceDocument">Force document</label><input id="node-input-forceDocument" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-clearDraft">Clear draft</label><input id="node-input-clearDraft" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-silent">Silent</label><input id="node-input-silent" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-supportStreaming">Streaming</label><input id="node-input-supportStreaming" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-noforwards">Protect content</label><input id="node-input-noforwards" type="checkbox"></div>
+    <div class="form-row"><label for="node-input-debug">Debug</label><input id="node-input-debug" type="checkbox"></div>
+</script>
 
   <script type="text/html" data-help-name="send-message">
     <p>The <b>send-message</b> node allows sending messages via Telegram using the <code>teleproto</code> library. It supports various message types, formatting options, and additional features like scheduling and silent messages.</p>
