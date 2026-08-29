@@ -7,7 +7,7 @@
 </p>
 
 ```bash
-npm i @patricktobias86/node-red-telegram-account
+npm i @patricktobias86/node-red-telegram-user
 ```
 
 This package contains a collection of Node‑RED nodes built on top of [TeleProto](https://www.npmjs.com/package/teleproto). They make it easier to interact with the Telegram MTProto API from your flows.

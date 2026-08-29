@@ -1,5 +1,5 @@
 {
-  "name": "@patricktobias86/node-red-telegram-account",
+  "name": "@patricktobias86/node-red-telegram-user",
   "version": "1.2.6",
   "description": "Node-RED nodes to communicate with TeleProto.",
   "main": "nodes/config.js",
