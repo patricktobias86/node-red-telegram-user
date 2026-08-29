@@ -54,6 +54,12 @@ npm test
 
 The tests use Mocha and verify that sessions are properly cached across nodes.
 
+Editor scripts use `@keload/node-red-dxp` and are bundled into the Node-RED HTML files before tests. Rebuild them directly with:
+
+```bash
+npm run build:editors
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.

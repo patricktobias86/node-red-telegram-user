@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2026-08-29
+### Changed
+- Migrated all Node-RED editor registrations to the Node-RED DXP `createEditorNode` helper.
+- Replaced manual editor selectors and event wiring with bundled Node-RED DXP DOM helpers where applicable.
+
 ## [1.3.1] - 2026-08-29
 ### Changed
 - Added `@keload/node-red-dxp` and migrated delete-message error handling to its `tryit` utility.
