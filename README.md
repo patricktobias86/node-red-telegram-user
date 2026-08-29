@@ -16,31 +16,33 @@ Node.js 20 or newer is required.
 
 ## Node overview
 
-See [docs/NODES.md](docs/NODES.md) for a detailed description of every node. Below is a quick summary:
+Available nodes:
 
-- **config** – stores your API credentials and caches sessions for reuse.
-- **auth** – interactive login that outputs a `stringSession` (also set on `msg.stringSession`).
-- **receiver** – emits messages for every incoming Telegram message using Raw MTProto updates (with optional ignore list, message type filter, media size limit, and optional edit filtering), including channel posts and service messages. Event listeners are cleaned up on node close so redeploys won't duplicate messages.
-- **command** – triggers when an incoming message matches a command or regex. Event listeners are removed on redeploy to prevent duplicates.
-- **send-message** – sends text or media messages with rich options.
-- **send-files** – uploads one or more files with captions and buttons.
-- **get-entity** – resolves usernames, IDs or t.me links into Telegram entities.
- - **delete-message** – deletes one or more messages, optionally revoking them, and forwards the original input message with the API response.
-- **iter-dialogs** – iterates over your dialogs (chats, groups, channels).
-- **iter-messages** – iterates over messages in a chat with filtering options.
-- **promote-admin** – promotes a user to admin with configurable rights.
-- **resolve-userid** – converts a username to a numeric user ID.
-- **resolve-peer** – resolves a Telegram reference into an entity and usable MTProto input peer.
-- **edit-message** – edits text, formatting, media, or buttons on a peer-scoped message.
-- **forward-messages** – forwards one or more peer-scoped messages to another peer or forum topic.
-- **download-media** – downloads media from a Telegram message or media object to a Buffer or file.
-- **react-message** – adds or removes Unicode and custom emoji reactions.
-- **pin-message** – pins, unpins, or clears pinned messages within a peer or topic.
-- **mark-read** – marks messages, mentions, and reactions read.
-- **participants** – lists visible participants with channel participant filters.
-- **member-management** – invites, kicks, bans, restricts, promotes, or demotes members.
-- **forum-topic** – lists, creates, edits, closes, pins, or deletes forum topics.
-- **message-events** – emits selected non-message raw update categories.
+| Node | Description |
+| --- | --- |
+| **config** | Stores API credentials and caches sessions for reuse. |
+| **auth** | Interactive login that outputs a `stringSession` (also set on `msg.stringSession`). |
+| **receiver** | Emits incoming Telegram messages using Raw MTProto updates, with ignore lists, type filters, media limits, and optional edit filtering. Cleans up listeners on close. |
+| **command** | Triggers when an incoming message matches a command or regular expression. Cleans up listeners on close. |
+| **send-message** | Sends text or media messages with rich options. |
+| **send-files** | Uploads one or more files with captions and buttons. |
+| **get-entity** | Resolves usernames, IDs, or t.me links into Telegram entities. |
+| **delete-message** | Deletes one or more messages, optionally revoking them, and forwards the input message with the API response. |
+| **iter-dialogs** | Iterates over dialogs such as chats, groups, and channels. |
+| **iter-messages** | Iterates over messages in a chat with filtering options. |
+| **promote-admin** | Promotes a user to admin with configurable rights. |
+| **resolve-userid** | Converts a username to a numeric user ID. |
+| **resolve-peer** | Resolves a Telegram reference into an entity and usable MTProto input peer. |
+| **edit-message** | Edits text, formatting, media, or buttons on a peer-scoped message. |
+| **forward-messages** | Forwards peer-scoped messages to another peer or forum topic. |
+| **download-media** | Downloads media from a Telegram message or media object to a Buffer or file. |
+| **react-message** | Adds or removes Unicode and custom emoji reactions. |
+| **pin-message** | Pins, unpins, or clears pinned messages within a peer or topic. |
+| **mark-read** | Marks messages, mentions, and reactions read. |
+| **participants** | Lists visible participants with channel participant filters. |
+| **member-management** | Invites, kicks, bans, restricts, promotes, or demotes members. |
+| **forum-topic** | Lists, creates, edits, closes, pins, or deletes forum topics. |
+| **message-events** | Emits selected non-message raw update categories. |
 
 All nodes preserve any properties on the incoming message outside of <code>msg.payload</code>.
 
