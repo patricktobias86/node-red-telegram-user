@@ -1,0 +1,12 @@
+[
+    {"id":"forum-events-tab","type":"tab","label":"Forum Topics and Message Events","disabled":false,"info":"List or create forum topics and observe synchronized raw update categories."},
+    {"id":"forum-note","type":"comment","z":"forum-events-tab","name":"Replace @forum with a forum-enabled supergroup","info":"Topics are threads inside a supergroup, not separate chats. Creating a topic requires suitable rights.","x":310,"y":40,"wires":[]},
+    {"id":"topics-inject","type":"inject","z":"forum-events-tab","name":"List topics","props":[{"p":"payload"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"{\"peer\":\"@forum\",\"action\":\"list\",\"limit\":20}","payloadType":"json","x":130,"y":110,"wires":[["forum-topic-example"]]},
+    {"id":"create-topic-inject","type":"inject","z":"forum-events-tab","name":"Create topic","props":[{"p":"payload"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"{\"peer\":\"@forum\",\"action\":\"create\",\"title\":\"Created from Node-RED\"}","payloadType":"json","x":140,"y":170,"wires":[["forum-topic-example"]]},
+    {"id":"forum-topic-example","type":"forum-topic","z":"forum-events-tab","name":"Forum topic action","config":"example-account-forum","peer":"","action":"list","x":360,"y":140,"wires":[["forum-debug"]]},
+    {"id":"events-note","type":"comment","z":"forum-events-tab","name":"Events arrive after deploy; no inject node needed","info":"TeleProto owns update synchronization. This node projects selected dispatched raw update categories.","x":290,"y":250,"wires":[]},
+    {"id":"message-events-example","type":"message-events","z":"forum-events-tab","name":"Topic, pin, reaction events","config":"example-account-forum","categories":"topic,pin,reaction","x":170,"y":310,"wires":[["events-debug"]]},
+    {"id":"forum-debug","type":"debug","z":"forum-events-tab","name":"Topic result","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","statusVal":"","statusType":"auto","x":600,"y":140,"wires":[]},
+    {"id":"events-debug","type":"debug","z":"forum-events-tab","name":"Raw update projection","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","statusVal":"","statusType":"auto","x":450,"y":310,"wires":[]},
+    {"id":"example-account-forum","type":"config","name":"Telegram User Account (configure me)","api_id":"","debug":false}
+]

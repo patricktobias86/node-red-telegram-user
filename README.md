@@ -61,7 +61,18 @@ Telegram permissions, privacy rules, participant visibility, membership state, a
 
 A single `TelegramClient` instance is therefore shared between all flows that point to the same configuration node, even after a redeploy. When Node‑RED restarts it checks the cache and returns the existing client rather than creating a new connection. The reference count is decreased whenever a node using the session is closed. Once all nodes have closed and the count reaches zero, the cached client is disconnected.
 
-Example flows can be found in the [examples](examples) folder.
+## Example flows
+
+Import these JSON files through **Node-RED → Menu → Import**, open the included **Telegram User Account (configure me)** node, and add your API ID, API hash, and string session. Replace placeholder peers and message IDs before deploying.
+
+| Example | Nodes demonstrated |
+| --- | --- |
+| [User authentication](examples/Example%20User%20Auth.json) | `auth` |
+| [Peer and message actions](examples/Peer%20and%20Message%20Actions.json) | `resolve-peer`, `edit-message`, `forward-messages`, `react-message`, `pin-message`, `mark-read` |
+| [Participants and member management](examples/Participants%20and%20Member%20Management.json) | `participants`, `member-management` |
+| [Forum topics and message events](examples/Forum%20Topics%20and%20Message%20Events.json) | `forum-topic`, `message-events` |
+
+Examples use placeholder usernames and IDs and do not contain Telegram credentials. Member and topic actions affect real chats when triggered, so review each Inject node before use.
 
 ## Running tests
 
