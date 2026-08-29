@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2026-08-29
+### Changed
+- Added `@keload/node-red-dxp` and migrated delete-message error handling to its `tryit` utility.
+
 ## [1.2.5] - 2026-04-17
 ### Fixed
 - Security Fixes

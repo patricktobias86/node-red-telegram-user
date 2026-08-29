@@ -10,7 +10,7 @@
 npm i @patricktobias86/node-red-telegram-user
 ```
 
-This package contains a collection of Node‑RED nodes built on top of [TeleProto](https://www.npmjs.com/package/teleproto). They make it easier to interact with the Telegram MTProto API from your flows.
+This package contains a collection of Node‑RED nodes built on top of [TeleProto](https://www.npmjs.com/package/teleproto) and the [Node-RED DXP toolkit](https://www.npmjs.com/package/@keload/node-red-dxp). They make it easier to interact with the Telegram MTProto API from your flows.
 
 Node.js 20 or newer is required.
 

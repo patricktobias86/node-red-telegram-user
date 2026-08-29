@@ -1,4 +1,9 @@
 const util = require("util");
+const { tryit } = require("@keload/node-red-dxp/utils");
+
+const tryDeleteMessages = tryit((client, chatId, messageIds, revoke) =>
+    client.deleteMessages(chatId, messageIds, { revoke })
+);
 
 module.exports = function (RED) {
     function DeleteMessage(config) {
@@ -23,16 +28,16 @@ module.exports = function (RED) {
                 return;
             }
 
-            try {
-                const response = await client.deleteMessages(chatId, messageIds, { revoke });
-
-                const out = { ...msg, payload: response };
-                node.send(out);
-                if (debug) {
-                    node.log('delete-message output: ' + util.inspect(out, { depth: null }));
-                }
-            } catch (err) {
+            const [err, response] = await tryDeleteMessages(client, chatId, messageIds, revoke);
+            if (err) {
                 node.error('Error deleting message: ' + err.message);
+                return;
+            }
+
+            const out = { ...msg, payload: response };
+            node.send(out);
+            if (debug) {
+                node.log('delete-message output: ' + util.inspect(out, { depth: null }));
             }
         });
     }
