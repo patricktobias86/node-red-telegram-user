@@ -1,6 +1,6 @@
 {
   "name": "@patricktobias86/node-red-telegram-user",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Node-RED nodes to communicate with a Telegram user.",
   "main": "nodes/config.js",
   "keywords": [
@@ -40,7 +40,14 @@
       "telegram-account-resolve-peer": "nodes/resolve-peer.js",
       "telegram-account-edit-message": "nodes/edit-message.js",
       "telegram-account-forward-messages": "nodes/forward-messages.js",
-      "telegram-account-download-media": "nodes/download-media.js"
+      "telegram-account-download-media": "nodes/download-media.js",
+      "telegram-account-react-message": "nodes/react-message.js",
+      "telegram-account-pin-message": "nodes/pin-message.js",
+      "telegram-account-mark-read": "nodes/mark-read.js",
+      "telegram-account-participants": "nodes/participants.js",
+      "telegram-account-member-management": "nodes/member-management.js",
+      "telegram-account-forum-topic": "nodes/forum-topic.js",
+      "telegram-account-message-events": "nodes/message-events.js"
     }
   },
   "publishConfig": {

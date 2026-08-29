@@ -22,9 +22,20 @@ Below is a short description of each node. For a full list of configuration opti
 | **edit-message** | Edits a message within its Telegram peer. Supports text, formatting, media, buttons, previews, and scheduling options. |
 | **forward-messages** | Forwards one or more message IDs from a source peer to a destination peer, optionally targeting a forum topic. |
 | **download-media** | Downloads media from a Telegram message or media object and returns a Buffer or writes to a configured path. |
+| **react-message** | Adds or removes Unicode/custom emoji reactions from a peer-scoped message. |
+| **pin-message** | Pins or unpins a peer-scoped message. Unpin without an ID clears pins. |
+| **mark-read** | Marks peer messages read and can clear unread mentions or reactions. |
+| **participants** | Retrieves participants visible to the account, with supported channel filters. |
+| **member-management** | Invites, kicks, bans, restricts, promotes, or demotes a member using peer-appropriate MTProto methods. |
+| **forum-topic** | Lists and manages threads inside a forum-enabled supergroup. Delete removes topic history. |
+| **message-events** | Projects dispatched raw updates for deletion, reaction, read, typing, participant, topic, and pin categories. |
 
 All nodes forward any properties on the incoming `msg` outside of `msg.payload` unchanged.
 
 All nodes provide a **Debug** checkbox. When enabled the node will log its input and output messages to aid troubleshooting.
 
 Telegram message IDs are peer-scoped. Pass source peer context with message IDs. User and channel peers commonly require access hashes obtained from legitimate Telegram responses; a numeric ID alone is not always resolvable. Received `MessageMedia` objects and sendable `InputMedia` objects are different MTProto types.
+
+Participant lists can be incomplete or unavailable because of Telegram permissions and visibility settings. Member changes require suitable creator/admin rights and may fail because of privacy, membership, or account restrictions. Flood limits are dynamic; handle exact `FLOOD_WAIT_X` errors instead of assuming a fixed request rate.
+
+`message-events` does not implement a second update-state engine. TeleProto remains responsible for `pts`, `qts`, `seq`, channel `pts`, deduplication, and difference recovery.

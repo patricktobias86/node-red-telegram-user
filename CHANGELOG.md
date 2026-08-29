@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-08-29
+### Added
+- Added `react-message`, `pin-message`, and `mark-read` nodes for peer-scoped message state.
+- Added `participants` and `member-management` nodes with separate basic-group and channel/supergroup behavior.
+- Added `forum-topic` for listing, creating, editing, closing, pinning, and deleting forum-topic history.
+- Added `message-events` for filtered raw deletion, reaction, read, typing, participant, topic, and pin updates.
+
+### Changed
+- Documented participant visibility, permission checks, dynamic flood limits, and TeleProto update-synchronization ownership.
+
 ## [1.4.0] - 2026-08-29
 ### Added
 - Added peer-aware `resolve-peer`, `edit-message`, `forward-messages`, and `download-media` nodes.
