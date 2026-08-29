@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-08-29
+### Added
+- Added peer-aware `resolve-peer`, `edit-message`, `forward-messages`, and `download-media` nodes.
+- Added shared MTProto peer-resolution helpers that rely on Telegram entities and session-cached access hashes.
+
+### Changed
+- Store API hashes and session strings using Node-RED credential storage while retaining legacy-flow loading compatibility.
+- Preserve explicit false values in send-message options.
+
+### Fixed
+- Preserve the Telegram response when send-message succeeds through its input-entity fallback.
+- Avoid failing when send-message has no file configured.
+
 ## [1.3.2] - 2026-08-29
 ### Changed
 - Migrated all Node-RED editor registrations to the Node-RED DXP `createEditorNode` helper.

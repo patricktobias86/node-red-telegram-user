@@ -30,6 +30,10 @@ See [docs/NODES.md](docs/NODES.md) for a detailed description of every node. Bel
 - **iter-messages** – iterates over messages in a chat with filtering options.
 - **promote-admin** – promotes a user to admin with configurable rights.
 - **resolve-userid** – converts a username to a numeric user ID.
+- **resolve-peer** – resolves a Telegram reference into an entity and usable MTProto input peer.
+- **edit-message** – edits text, formatting, media, or buttons on a peer-scoped message.
+- **forward-messages** – forwards one or more peer-scoped messages to another peer or forum topic.
+- **download-media** – downloads media from a Telegram message or media object to a Buffer or file.
 
 All nodes preserve any properties on the incoming message outside of <code>msg.payload</code>.
 
@@ -38,6 +42,11 @@ All nodes include a <code>Debug</code> option that logs incoming and outgoing me
 ## Session management
 
 Connections to Telegram are cached by the configuration node. A Map keyed by the `stringSession` tracks each client together with a reference count and the connection promise. If a node is created while another one is still connecting, it waits for that promise and then reuses the same client.
+
+API hashes and session strings are stored as Node-RED credentials. Treat exported sessions, login codes, and 2FA passwords as secrets and never send them through debug nodes.
+Existing configurations remain loadable; open and save them once to migrate legacy plain flow properties into credential storage.
+
+Telegram user and channel IDs may require an access hash. Use usernames, entities received from Telegram, or references already known to the session. The nodes do not invent missing access hashes or translate Bot API `-100...` IDs into guaranteed MTProto peers.
 
 A single `TelegramClient` instance is therefore shared between all flows that point to the same configuration node, even after a redeploy. When Node‑RED restarts it checks the cache and returns the existing client rather than creating a new connection. The reference count is decreased whenever a node using the session is closed. Once all nodes have closed and the count reaches zero, the cached client is disconnected.
 

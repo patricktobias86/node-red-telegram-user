@@ -8,9 +8,9 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         this.debugEnabled = config.debug;
 
-        const sessionStr = config.session;
+        const sessionStr = this.credentials?.session ?? config.session;
         const apiId = parseInt(config.api_id);
-        const apiHash = config.api_hash;
+        const apiHash = this.credentials?.api_hash ?? config.api_hash;
 
         this.session = new StringSession(sessionStr);
         this.client = null;
@@ -90,5 +90,10 @@ module.exports = function (RED) {
         });
     }
 
-    RED.nodes.registerType('config', TelegramClientConfig);
+    RED.nodes.registerType('config', TelegramClientConfig, {
+        credentials: {
+            api_hash: { type: "password" },
+            session: { type: "password" },
+        },
+    });
 };

@@ -38,4 +38,24 @@ describe('message property relay', function() {
     assert.strictEqual(out.foo, 'bar');
     assert.deepStrictEqual(out.payload.response, 'ok');
   });
+
+  it('keeps fallback send response and explicit false options', async function() {
+    const calls = [];
+    const client = {
+      sendMessage: async (peer, params) => {
+        calls.push([peer, params]);
+        if (calls.length === 1) throw new Error('resolve peer');
+        return { id: 9 };
+      },
+      getInputEntity: async () => ({ peer: 'resolved' })
+    };
+    const { NodeCtor, getSent } = setup(client);
+    const node = new NodeCtor({ config: 'c', file: '', silent: true, linkPreview: true });
+
+    await node._events.input.call(node, { payload: { client, chatId: '123', message: 'hello', silent: false, linkPreview: false } });
+
+    assert.strictEqual(calls[0][1].silent, false);
+    assert.strictEqual(calls[0][1].linkPreview, false);
+    assert.deepStrictEqual(getSent().payload, { response: { id: 9 } });
+  });
 });

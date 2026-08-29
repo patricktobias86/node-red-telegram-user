@@ -18,7 +18,13 @@ Below is a short description of each node. For a full list of configuration opti
 | **iter-messages** | Iterates over messages in a chat with various filtering and pagination options. |
 | **promote-admin** | Grants admin rights to a user in a group or channel with configurable permissions. |
 | **resolve-userid** | Converts a Telegram username to its numeric user ID. |
+| **resolve-peer** | Resolves a username, link, known ID, or entity into a full entity and usable MTProto input peer. Numeric user/channel IDs work only when the session already knows their access hashes. |
+| **edit-message** | Edits a message within its Telegram peer. Supports text, formatting, media, buttons, previews, and scheduling options. |
+| **forward-messages** | Forwards one or more message IDs from a source peer to a destination peer, optionally targeting a forum topic. |
+| **download-media** | Downloads media from a Telegram message or media object and returns a Buffer or writes to a configured path. |
 
 All nodes forward any properties on the incoming `msg` outside of `msg.payload` unchanged.
 
 All nodes provide a **Debug** checkbox. When enabled the node will log its input and output messages to aid troubleshooting.
+
+Telegram message IDs are peer-scoped. Pass source peer context with message IDs. User and channel peers commonly require access hashes obtained from legitimate Telegram responses; a numeric ID alone is not always resolvable. Received `MessageMedia` objects and sendable `InputMedia` objects are different MTProto types.

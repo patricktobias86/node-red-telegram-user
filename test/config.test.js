@@ -20,14 +20,19 @@ function load() {
   }
 
   let NodeCtor;
+  let credentialDefinition;
   const RED = {
     nodes: {
-      createNode(node) {
+      createNode(node, config) {
         node._events = {};
+        node.credentials = config._credentials;
         node.on = (e, fn) => { node._events[e] = fn; };
         node.status = () => {};
       },
-      registerType(name, ctor) { NodeCtor = ctor; }
+      registerType(name, ctor, options) {
+        NodeCtor = ctor;
+        credentialDefinition = options?.credentials;
+      }
     }
   };
 
@@ -36,7 +41,7 @@ function load() {
     'teleproto/sessions': { StringSession: StringSessionStub }
   })(RED);
 
-  return { NodeCtor, instances };
+  return { NodeCtor, instances, getCredentialDefinition: () => credentialDefinition };
 }
 
 describe('TelegramClientConfig', function() {
@@ -58,5 +63,17 @@ describe('TelegramClientConfig', function() {
     const c = new NodeCtor(cfg);
     assert.strictEqual(instances.length, 1);
     assert.strictEqual(b.client, c.client);
+  });
+
+  it('loads API hash and session from Node-RED credentials', function() {
+    const { NodeCtor, instances, getCredentialDefinition } = load();
+    new NodeCtor({ api_id: 1, _credentials: { session: 'secret-session', api_hash: 'secret-hash' } });
+
+    assert.strictEqual(instances[0].session.str, 'secret-session');
+    assert.strictEqual(instances[0].hash, 'secret-hash');
+    assert.deepStrictEqual(getCredentialDefinition(), {
+      api_hash: { type: 'password' },
+      session: { type: 'password' }
+    });
   });
 });

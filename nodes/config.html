@@ -7,8 +7,6 @@ var NodeRedTelegramEditor=(()=>{var h=Object.defineProperty;var tr=Object.getOwn
       defaults: {
           name: { value: '' },
           api_id: {value:"", required:true},
-          api_hash: {value:"", required:true},
-          session: {value:"", required:true},
           debug: {value:false},
           useIPV6: {value: undefined},
           timeout: {value: undefined},
@@ -30,11 +28,20 @@ var NodeRedTelegramEditor=(()=>{var h=Object.defineProperty;var tr=Object.getOwn
           securityChecks: {value: undefined},
           testServers: {value: undefined}
       },
+      credentials: {
+          api_hash: { type: 'password', required: true },
+          session: { type: 'password', required: true }
+      },
       label: function() {
           return this.name || "telegram user config";
       },
       oneditprepare: function() {
-   
+          if (!this.credentials?.has_api_hash && this.api_hash) {
+              $('#node-config-input-api_hash').val(this.api_hash);
+          }
+          if (!this.credentials?.has_session && this.session) {
+              $('#node-config-input-session').val(this.session);
+          }
       }
   }));
 </script>
@@ -50,11 +57,11 @@ var NodeRedTelegramEditor=(()=>{var h=Object.defineProperty;var tr=Object.getOwn
   </div>
   <div class="form-row">
       <label for="node-config-input-api_hash"><i class="icon-tasks"></i> API Hash</label>
-      <input type="text" id="node-config-input-api_hash" placeholder="Enter API Hash" style="width:70%" ng-model="node.api_hash">
+      <input type="password" id="node-config-input-api_hash" placeholder="Enter API Hash" style="width:70%">
   </div>
   <div class="form-row">
       <label for="node-config-input-session"><i class="icon-tasks"></i> Session</label>
-      <input type="text" id="node-config-input-session" placeholder="Enter Session" style="width:70%" ng-model="node.session">
+      <input type="password" id="node-config-input-session" placeholder="Enter Session" style="width:70%">
   </div>
   <div class="form-row">
       <label for="node-config-input-debug"><i class="icon-bug"></i> Debug</label>
