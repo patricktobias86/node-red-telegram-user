@@ -29,7 +29,7 @@ Available nodes:
 | **get-entity** | Resolves usernames, IDs, or t.me links into Telegram entities. |
 | **delete-message** | Deletes one or more messages, optionally revoking them, and forwards the input message with the API response. |
 | **iter-dialogs** | Iterates over dialogs such as chats, groups, and channels. |
-| **iter-messages** | Iterates over messages in a chat with filtering options. |
+| **iter-messages** | Iterates over messages in a chat with filtering options. Reports a node error when no Telegram client is configured. |
 | **promote-admin** | Promotes a user to admin with configurable rights. |
 | **resolve-userid** | Converts a username to a numeric user ID. |
 | **resolve-peer** | Resolves a Telegram reference into an entity and usable MTProto input peer. |
