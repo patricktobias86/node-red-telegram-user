@@ -1,6 +1,6 @@
 {
   "name": "@patricktobias86/node-red-telegram-user",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "Node-RED nodes to communicate with a Telegram user.",
   "main": "nodes/config.js",
   "keywords": [
